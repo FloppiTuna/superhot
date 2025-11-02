@@ -15,7 +15,7 @@ local function setMetadata(manager, root)
         local event, key = os.pullEvent("key")
         if key == keys.enter then
             choice = nameEntry:getText()
-            _G.discBlueprint.label = choice
+            _G.discBlueprint.label = choice:gsub("^%s*(.-)%s*$", "%1") -- trim whitespace
 
             setView(manager, root, require("wizard.Burn_CD.2_addFiles"))
         end
